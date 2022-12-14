@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Document</title>
+  <link rel="stylesheet" th:href="@{/css/index.css}"/>
+  <link rel="stylesheet" th:href="@{/css/right-home.css}"/>
+  <link rel="stylesheet" th:href="@{/css/music.css}"/>
+  <link
+          rel="stylesheet"
+          th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css}"
+  />
+  <link
+          rel="stylesheet"
+          th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css}"
+  />
+  <link
+          rel="stylesheet"
+          th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css}"
+  />
+</head>
+<body>
+<!-- Phần left -->
+<div class="sidebar-container">
+  <div>
+    <a th:href="@{/}">
+      <img
+              th:src="@{/image/1000_F_249327091_uhnpmetNHxjBYDmWdSxdRRN0maYOx0ei.jpg}"
+              alt=""
+              class="logo"
+      />
+    </a>
+  </div>
+  <div class="sidebar-body">
+    <a th:href="@{/}">
+      <div class="sidebar-item">
+        <div><i class="bi bi-house"></i></div>
+        <div>Home</div>
+      </div>
+    </a>
+    <a th:href="@{/trending}">
+      <div class="sidebar-item">
+        <div><i class="bi bi-arrow-up-right"></i></div>
+        <div>Trending</div>
+      </div>
+    </a>
+    <a th:href="@{/albums}">
+      <div class="sidebar-item">
+        <div><i class="bi bi-journal-album"></i></div>
+        <div>Albums</div>
+      </div>
+    </a>
+    <a th:href="@{/artist}">
+      <div class="sidebar-item">
+        <div><i class="bi bi-person"></i></div>
+        <div>Artist</div>
+      </div>
+    </a>
+  </div>
+</div>
+<!-- Phần left -->
+
+<!-- Phần main -->
+<div class="body-container">
+  <div class="home-top">
+    <div class="h-s">
+      <form th:action="@{/music/search}" method="get" th:object="${request}">
+        <div class="search">
+          <input type="text" class="input-search" placeholder="Tìm kiếm" th:field="*{search}"/>
+          <button class="btn-search" type="submit">
+            <i class="bi bi-search"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Phần authen -->
+    <div class="app-authen">
+      <div>Trần Tuấn</div>
+      <img th:src="@{/image/authen.png}" alt="" class="img-auth"/>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="sub-main">
+      <div>
+        <div>
+          <div class="music-container" id="music-container">
+            <div class="music-info">
+              <h4 id="title" th:text="${song.nameSong}">2.am</h4>
+              <div class="progress-container" id="progress-container">
+                <div class="progress" id="progress"></div>
+              </div>
+            </div>
+
+            <audio th:src="@{${'/mp3/' + song.linkSong}}" id="audio"></audio>
+
+            <div class="img-container">
+              <img th:src="@{${'/image/song/' + song.image}}" alt="music-cover" id="cover" class=""/>
+            </div>
+            <div class="navigation">
+              <button id="prev" class="action-btn">
+                <i class="fas fa-backward"></i>
+              </button>
+              <button id="play" class="action-btn action-btn-big">
+                <i class="fas fa-play"></i>
+              </button>
+              <button id="next" class="action-btn">
+                <i class="fas fa-forward"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="music-title" th:text="${song.nameSong}"></div>
+      </div>
+
+      <div class="music-other">
+        <div>
+          <div class="music-other-list-name" th:text="'Các bài hát khác của ' + ${artist.name}"></div>
+          <div class="trending-list">
+            <!-- for -->
+            <a th:href="@{${'/music/' + other.idSong}}" class="treding-it" th:each="other : ${others}">
+              <div class="trending-item">
+                <div class="trending-number">
+                  <div>
+                        <span class="top-number"
+                        ><i class="bi bi-music-note-beamed"></i
+                        ></span>
+                  </div>
+                  <div>
+                    <img th:src="@{${'/image/song/' + other.image}}" alt="" class="trending-img" />
+                  </div>
+                </div>
+                <div class="trending-name" th:text="${other.nameSong}"></div>
+                <div class="trending-time" th:text="${other.length}"></div>
+              </div>
+            </a>
+            <!-- for -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Phần main -->
+<script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js}"></script>
+<script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js}"></script>
+
+<!--  jQuery 1.7+  -->
+<script th:src="@{/plugins/jquery-3.6.1.min.js}"></script>
+
+<script th:src="@{/js/music.js}"></script>
+</body>
+</html>

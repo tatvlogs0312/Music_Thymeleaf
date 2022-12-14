@@ -1,0 +1,69 @@
+.detail-title{
+    display: flex;
+    padding: 0 40px;
+}
+
+.albums-img{
+    width: 150px;
+    height: 150px;
+}
+
+.albums-name{
+    margin-left: 20px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.main-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.main-item:hover{
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.search-img{
+    width: 50px;
+    height: 50px;
+}
+
+.main-item-title{
+    display: flex;
+    align-items: center;
+}
+
+.main-item-title-info{
+    display: flex;
+    align-items: center;
+}
+
+.search-icon{
+    margin: 0 10px;
+    font-size: 20px;
+}
+
+.search-info{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 10px;
+    flex-direction: column;
+}
+
+.search-name{
+    font-size: 17px;
+}
+
+.main-block-title{
+    margin-left: 10px;
+    margin-bottom: 20px;
+    font-size: 20px
+}
+
+.detail-list{
+    margin-top: 20px;
+}

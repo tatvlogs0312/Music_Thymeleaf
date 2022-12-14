@@ -1,0 +1,66 @@
+.body-container{
+    width: 85%;
+    min-height: 100vh;
+    background-color: #636e72;
+    margin-left: auto;
+}
+
+.search{
+    position: relative;
+    width: 600px;
+    height: 40px;
+}
+
+.input-search{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.btn-search{
+    width: 70px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0px;
+    border-radius: 30px;
+}
+
+.img-auth{
+    width: 35px;
+    margin-left: 10px;
+}
+
+.home-top{
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    width: 100%;
+    min-height: 100px;
+    background-color: #2d3436;
+}
+
+.h-s{
+    margin-left:200px;
+}
+
+.app-authen{
+    margin-top: 10px;
+    margin-right: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-authen > div:first-child{
+    margin-right: 15px;
+    color: white;
+}
