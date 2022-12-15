@@ -25,7 +25,7 @@ public class ArtistService {
 
     public Artist getArtistById(String id) {
         Long artistId = Long.parseLong(id);
-        var artist = artistRepository.findById(artistId);
+        Optional<Artist> artist = artistRepository.findById(artistId);
         return artist.orElse(null);
     }
 }

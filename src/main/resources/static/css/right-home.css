@@ -1,7 +1,7 @@
 .body-container{
     width: 85%;
     min-height: 100vh;
-    background-color: #636e72;
+    background-color: white;
     margin-left: auto;
 }
 
@@ -45,7 +45,7 @@
     padding: 20px 0;
     width: 100%;
     min-height: 100px;
-    background-color: #2d3436;
+    background-color: #cccccc;
 }
 
 .h-s{

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AlbumsService {
@@ -19,7 +20,7 @@ public class AlbumsService {
 
     public Albums getAlbumsById(String id){
         Long albumsId = Long.parseLong(id);
-        var album = albumsRepository.findById(albumsId);
+        Optional<Albums> album = albumsRepository.findById(albumsId);
         return album.orElse(null);
     }
 

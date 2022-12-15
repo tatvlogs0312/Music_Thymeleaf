@@ -1,12 +1,9 @@
 package com.example.musicbackend.service.user;
 
 import com.example.musicbackend.entity.User;
-import com.example.musicbackend.request.UserRegistrationRequest;
-import org.springframework.stereotype.Service;
+import com.example.musicbackend.request.UserRegistrationDto;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
-@Service
-public interface UserService {
-    void save(UserRegistrationRequest registrationDto);
-
-    User findByEmail(String email);
+public interface UserService extends UserDetailsService {
+    User save(UserRegistrationDto registrationDto);
 }

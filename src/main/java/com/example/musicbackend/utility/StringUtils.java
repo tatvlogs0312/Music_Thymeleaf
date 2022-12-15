@@ -7,6 +7,6 @@ public class StringUtils {
     }
 
     public static boolean isNullOrEmpty(String val) {
-        return val == null || val.trim().isBlank() || val.trim().isEmpty();
+        return val == null || val.trim().isEmpty();
     }
 }

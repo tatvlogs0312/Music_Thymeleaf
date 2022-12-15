@@ -59,7 +59,7 @@ public class SongService {
         String key = CommonUtils.convertValueSearch(keyWord);
         List<Object[]> songList = songRepository.findSongByKeyWord(key);
         if(!CollectionUtils.isEmpty(songList)){
-            var list = songList.stream().map(x -> new SongSearchDTO(x)).collect(Collectors.toList());
+            List<SongSearchDTO> list = songList.stream().map(x -> new SongSearchDTO(x)).collect(Collectors.toList());
             return list;
         }
         return Collections.emptyList();
