@@ -90,8 +90,15 @@
 
     <!-- Phần authen -->
     <div class="app-authen">
-      <div>Trần Tuấn</div>
-      <img th:src="@{Image/authen.png}" alt="" class="img-auth"/>
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+          <span>Trần Tuấn</span>
+          <img th:src="@{./image/authen.png}" alt="" class="img-auth"/>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a th:href="@{/logout}">Đăng xuất</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 
@@ -119,7 +126,7 @@
               </div>
             </div>
             <div class="trending-name" th:text="${trending.nameSong}">Nơi này có a</div>
-            <div class="trending-time" th:text="${trending.length}">5:20</div>
+            <div class="trending-time" th:text="${trending.countPlay}">5:20</div>
           </div>
         </a>
         <!-- for -->

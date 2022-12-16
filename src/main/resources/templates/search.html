@@ -82,8 +82,15 @@
 
         <!-- Phần authen -->
         <div class="app-authen">
-            <div>Trần Tuấn</div>
-            <img th:src="@{image/authen.png}" alt="" class="img-auth"/>
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                    <span>Trần Tuấn</span>
+                    <img th:src="@{./image/authen.png}" alt="" class="img-auth"/>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a th:href="@{/logout}">Đăng xuất</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 
