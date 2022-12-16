@@ -43,6 +43,11 @@ public class SongService {
     public Song getSongById(String id){
         Long idSong = Long.parseLong(id);
         Optional<Song> song = songRepository.findById(idSong);
+        if(song.isPresent()){
+            Song songData = song.get();
+            songData.setCountPlay(songData.getCountPlay() + 1);
+            songRepository.save(songData);
+        }
         return song.orElse(null);
     }
 
@@ -59,8 +64,7 @@ public class SongService {
         String key = CommonUtils.convertValueSearch(keyWord);
         List<Object[]> songList = songRepository.findSongByKeyWord(key);
         if(!CollectionUtils.isEmpty(songList)){
-            List<SongSearchDTO> list = songList.stream().map(x -> new SongSearchDTO(x)).collect(Collectors.toList());
-            return list;
+            return songList.stream().map(SongSearchDTO::new).collect(Collectors.toList());
         }
         return Collections.emptyList();
     }

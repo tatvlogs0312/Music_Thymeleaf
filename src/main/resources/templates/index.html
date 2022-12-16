@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -47,25 +47,25 @@
     </div>
     <div class="sidebar-body">
         <a th:href="@{/}">
-            <div class="sidebar-item active">
+            <div class="sidebar-item active" style="color: #63cdda">
                 <div><i class="bi bi-house"></i></div>
                 <div>Home</div>
             </div>
         </a>
         <a th:href="@{/trending}">
-            <div class="sidebar-item">
+            <div class="sidebar-item" style="color: #e66767">
                 <div><i class="bi bi-arrow-up-right"></i></div>
                 <div>Trending</div>
             </div>
         </a>
         <a th:href="@{/albums}">
-            <div class="sidebar-item">
+            <div class="sidebar-item" style="color: #546de5">
                 <div><i class="bi bi-journal-album"></i></div>
                 <div>Albums</div>
             </div>
         </a>
         <a th:href="@{/artist}">
-            <div class="sidebar-item">
+            <div class="sidebar-item" style="color: #f5cd79">
                 <div><i class="bi bi-person"></i></div>
                 <div>Artist</div>
             </div>
@@ -90,8 +90,29 @@
 
         <!-- Phần authen -->
         <div class="app-authen">
-            <div>Trần Tuấn</div>
-            <img th:src="@{./image/authen.png}" alt="" class="img-auth"/>
+<!--            <th:block sec:authorize="#{isAuthenticated()}">-->
+<!--                <div class="dropdown">-->
+<!--                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">-->
+<!--                        <span>Trần Tuấn</span>-->
+<!--                        <img th:src="@{./image/authen.png}" alt="" class="img-auth"/>-->
+<!--                    </button>-->
+<!--                    <ul class="dropdown-menu">-->
+<!--                        <li><a th:href="@{/logout}">Đăng xuất</a></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </th:block>-->
+<!--            <th:block sec:authorize="#{isAnonymous()}">-->
+<!--                <a th:href="@{/login}">Log in</a>-->
+<!--            </th:block>-->
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                    <span>Trần Tuấn</span>
+                    <img th:src="@{./image/authen.png}" alt="" class="img-auth"/>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a th:href="@{/logout}">Đăng xuất</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 
@@ -110,7 +131,7 @@
         <div class="main-block">
             <div class="main-block-title">
                 <div>Nổi bật</div>
-                <div><a href="">xem tất cả</a></div>
+                <div><a th:href="@{/trending}">xem tất cả</a></div>
             </div>
             <div class="main-block-list-item">
                 <div class="row">
@@ -161,22 +182,48 @@
 
         <div class="main-block">
             <div class="main-block-title">
-                <div>Nổi bật</div>
-                <div><a href="">xem tất cả</a></div>
+                <div>Albums</div>
+                <div><a th:href="@{/albums}">xem tất cả</a></div>
             </div>
             <div class="main-block-list-item">
                 <div class="row">
                     <!-- for 2-->
-                    <div class="col-md-2" th:each="song : ${populars}">
-                        <a th:href="@{${'/music/' + song.idSong}}">
+                    <div class="col-md-2" th:each="album : ${albums}">
+                        <a th:href="@{${'/albums/detail/' + album.idAlbums}}">
                             <div class="main-item">
                                 <div>
                                     <img
-                                            th:src="@{${'/image/song/' + song.image}}"
+                                            th:src="@{${'/image/album/' + album.imageAlbum}}"
                                             alt="avata"
                                     />
                                 </div>
-                                <div class="main-item-name" th:text="${song.nameSong}"></div>
+                                <div class="main-item-name" th:text="${album.albumName}"></div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- for 2-->
+                </div>
+            </div>
+        </div>
+
+        <div class="main-block">
+            <div class="main-block-title">
+                <div>Ca sĩ</div>
+                <div><a th:href="@{/artist}">xem tất cả</a></div>
+            </div>
+            <div class="main-block-list-item">
+                <div class="row">
+                    <!-- for 2-->
+                    <div class="col-md-2" th:each="artist : ${artists}">
+                        <a th:href="@{${'/artist/detail/' + artist.idArtist}}">
+                            <div class="main-item">
+                                <div>
+                                    <img
+                                            th:src="@{${'/image/artist/' + artist.avatar}}"
+                                            alt="avata"
+                                    />
+                                </div>
+                                <div class="main-item-name" th:text="${artist.name}"></div>
                             </div>
                         </a>
                     </div>

@@ -7,7 +7,8 @@
     justify-content: space-between;
     align-items: flex-end;
     padding: 0 10px;
-    color: white;
+    color: rgba(37, 204, 247,1.0);
+    font-size: 18px;
 }
 
 .main-block-list-item{

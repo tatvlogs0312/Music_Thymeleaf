@@ -18,6 +18,7 @@
 .main-block-title > div:first-child{
     font-size: 25px;
     font-weight: 700;
+    color: black;
 }
 
 .main-block-title > div:last-child{

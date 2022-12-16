@@ -39,25 +39,25 @@
     </div>
     <div class="sidebar-body">
         <a th:href="@{/}">
-            <div class="sidebar-item">
+            <div class="sidebar-item" style="color: #63cdda">
                 <div><i class="bi bi-house"></i></div>
                 <div>Home</div>
             </div>
         </a>
         <a th:href="@{/trending}">
-            <div class="sidebar-item">
+            <div class="sidebar-item" style="color: #e66767">
                 <div><i class="bi bi-arrow-up-right"></i></div>
                 <div>Trending</div>
             </div>
         </a>
         <a th:href="@{/albums}">
-            <div class="sidebar-item">
+            <div class="sidebar-item" style="color: #546de5">
                 <div><i class="bi bi-journal-album"></i></div>
                 <div>Albums</div>
             </div>
         </a>
         <a th:href="@{/artist}">
-            <div class="sidebar-item">
+            <div class="sidebar-item" style="color: #f5cd79">
                 <div><i class="bi bi-person"></i></div>
                 <div>Artist</div>
             </div>
@@ -83,7 +83,7 @@
         <!-- Phần authen -->
         <div class="app-authen">
             <div>Trần Tuấn</div>
-            <img th:src="@{Image/authen.png}" alt="" class="img-auth"/>
+            <img th:src="@{image/authen.png}" alt="" class="img-auth"/>
         </div>
     </div>
 
@@ -116,7 +116,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="main-item-time" th:text="${song.length}">3:00</div>
+                                <div class="main-item-time" th:text="${song.countPlay}">3:00</div>
                             </div>
                         </a>
                     </div>

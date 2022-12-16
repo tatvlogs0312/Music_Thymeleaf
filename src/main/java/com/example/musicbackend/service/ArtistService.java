@@ -28,4 +28,8 @@ public class ArtistService {
         Optional<Artist> artist = artistRepository.findById(artistId);
         return artist.orElse(null);
     }
+
+    public List<Artist> get6Artists(){
+        return artistRepository.getAllLimit6();
+    }
 }
