@@ -49,6 +49,9 @@
     margin-top: 10px;
     font-size: 13px;
     font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .btn-play i{

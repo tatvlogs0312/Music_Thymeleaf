@@ -1,10 +1,15 @@
 package com.example.musicbackend.service.user;
 
 import com.example.musicbackend.constants.Constants;
+import com.example.musicbackend.dto.UserDTO;
 import com.example.musicbackend.entity.Role;
 import com.example.musicbackend.entity.User;
 import com.example.musicbackend.repository.user.UserRepository;
 import com.example.musicbackend.request.UserRegistrationDto;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -32,6 +37,12 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User save(UserRegistrationDto registrationDto) {
+        List<String> error = new ArrayList<>();
+        Optional<User> emailExist = userRepository.findByEmail(registrationDto.getEmail());
+        if (emailExist.isPresent()){
+            error.add("Email đã tồn tại");
+            return null;
+        }
         User user = new User(registrationDto.getFirstName(),
                 registrationDto.getLastName(), registrationDto.getEmail(),
                 passwordEncoder.encode(registrationDto.getPassword()), Arrays.asList(new Role(Constants.ROLE_USER)));
@@ -40,13 +51,24 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public UserDTO me(String email) {
+        Optional<User> userOptional = userRepository.findByEmail(email);
+        if (userOptional.isPresent()){
+            User user = userOptional.get();
+            return new UserDTO(user.getLastName(), user.getEmail());
+        }
+        return null;
+    }
+
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        User user = userRepository.findByEmail(username);
-        if(user == null) {
+        Optional<User> userOptional = userRepository.findByEmail(username);
+        if(!userOptional.isPresent()) {
             throw new UsernameNotFoundException("Invalid username or password.");
         }
-        return new org.springframework.security.core.userdetails.User(user.getLastName(), user.getPassword(), mapRolesToAuthorities(user.getRoles()));
+        User user = userOptional.get();
+        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), mapRolesToAuthorities(user.getRoles()));
     }
 
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles){

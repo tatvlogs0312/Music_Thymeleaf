@@ -11,7 +11,7 @@ import java.nio.file.Paths;
 
 @Service
 public class FileImgService {
-    private final Path rootDir = Paths.get("Image");
+    private final Path rootDir = Paths.get("src/main/resources/static/image/song");
 
     public byte[] readFile(String fileName){
         if(!Files.exists(rootDir)){

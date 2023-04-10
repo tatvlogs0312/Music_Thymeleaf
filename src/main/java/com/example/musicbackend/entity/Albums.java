@@ -18,7 +18,7 @@ public class Albums {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "albums")
-//    @SequenceGenerator(name = "album" , sequenceName = "album_id_seq", allocationSize = 1)
+    @SequenceGenerator(name = "album" , sequenceName = "album_id_seq", allocationSize = 1)
     @Column(name = "id_albums")
     private Long idAlbums;
 

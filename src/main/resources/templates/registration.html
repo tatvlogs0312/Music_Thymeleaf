@@ -39,6 +39,9 @@
         <div class="alert alert-info">You've successfully registered
           to our awesome app!</div>
       </div>
+      <div th:if="${param.error}" class="alert alert-danger">
+        Email does exist.
+      </div>
 
       <h1>Registration</h1>
 

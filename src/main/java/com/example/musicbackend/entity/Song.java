@@ -16,8 +16,7 @@ public class Song {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "song")
-//    @SequenceGenerator(name = "song" , sequenceName = "song_id_seq", allocationSize = 1)
-    @Column(name = "id_song")
+    @SequenceGenerator(name = "song" , sequenceName = "song_id_seq", allocationSize = 1)
     private Long idSong;
 
     @Column(name = "name_song")
